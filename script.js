@@ -11,9 +11,14 @@ const btn = document.querySelector("button");
 const joke = document.querySelector("#jokes")
 
 const dadsJokes = async () => {
-    const config = { headers: { Accept: "application/json" } };
-    const res = await axios.get("https://icanhazdadjoke.com/", config);
-    return res.data.joke;
+    try{
+        const config = { headers: { Accept: "application/json" } };
+        const res = await axios.get("https://icanhazdadjoke.com/", config);
+        return res.data.joke;
+    }catch(e){
+        return "no jokes availble, sorry";
+    }
+    
 }
 let newDadjoke =  async() => {
     let dadJoke =await dadsJokes();
